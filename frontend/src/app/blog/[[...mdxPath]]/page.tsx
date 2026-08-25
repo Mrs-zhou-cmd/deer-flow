@@ -97,6 +97,7 @@ export async function generateMetadata(props) {
 
 export default async function Page(props) {
   const params = await props.params;
+  console.log("params", params);
   const searchParams = await props.searchParams;
   const mdxPath = params.mdxPath ?? [];
   const { locale } = await getI18n();

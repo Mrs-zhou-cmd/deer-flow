@@ -64,6 +64,7 @@ export function accumulateUsage(messages: Message[]): TokenUsage | null {
 
     if (message.id) {
       if (countedMessageIds.has(message.id)) {
+        //结束当前循环 直接进入下一次循环
         continue;
       }
       countedMessageIds.add(message.id);
@@ -138,6 +139,7 @@ export function selectHeaderTokenUsage({
   messages: Message[];
   pendingMessages?: Message[];
 }): TokenUsage | null {
+  console.log("backendUsage", backendUsage);
   if (hasNonZeroUsage(backendUsage)) {
     const pendingUsage = accumulateUsage(pendingMessages);
     return pendingUsage ? addUsage(backendUsage, pendingUsage) : backendUsage;

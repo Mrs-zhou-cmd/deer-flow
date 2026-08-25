@@ -2175,7 +2175,7 @@ export function InputBox({
       )}
       <PromptInput
         className={cn(
-          "bg-background/85 relative z-10 rounded-2xl backdrop-blur-sm transition-all duration-300 ease-out *:data-[slot='input-group']:rounded-2xl",
+          "relative z-10 rounded-2xl bg-red-500 backdrop-blur-sm transition-all duration-300 ease-out *:data-[slot='input-group']:rounded-2xl",
           polishingInput &&
             "shadow-primary/10 ring-primary/25 shadow-lg ring-1",
           className,
@@ -2477,7 +2477,7 @@ export function InputBox({
                           {t.inputBox.proMode}
                         </div>
                         <div className="pl-7 text-xs">
-                          {t.inputBox.proModeDescription}
+                          {t.inputBox.proModeDescription}----3
                         </div>
                       </div>
                       {context.mode === "pro" ? (

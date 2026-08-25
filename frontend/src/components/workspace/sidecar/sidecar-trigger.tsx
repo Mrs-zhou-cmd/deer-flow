@@ -14,7 +14,6 @@ export function SidecarTrigger() {
   const { t } = useI18n();
   const sidecar = useMaybeSidecar();
   const [isReconciling, setIsReconciling] = useState(false);
-
   if (!sidecar?.sidecarThreadId) {
     return null;
   }

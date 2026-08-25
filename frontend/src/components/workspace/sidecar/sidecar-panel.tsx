@@ -867,7 +867,7 @@ function SidecarModeMenu({
                 {t.inputBox.proMode}
               </div>
               <div className="pl-7 text-xs">
-                {t.inputBox.proModeDescription}
+                {t.inputBox.proModeDescription}---12
               </div>
             </div>
             {mode === "pro" ? (

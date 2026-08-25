@@ -2196,7 +2196,6 @@ export function useThreadStream({
             status: "uploaded" as const,
           }),
         );
-
         await thread.submit(
           {
             messages: buildThreadSubmitMessages({
