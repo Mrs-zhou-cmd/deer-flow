@@ -623,7 +623,7 @@ export function restoreLocalTurnMessageOrder(
   }
 
   const stablePrefix: Message[] = [];
-  const earlyPendingSteps: Message[] = [];
+  const earlyPendingSteps: Message[] = []; //抢跑AI/tool步骤
   for (const message of messages.slice(0, pendingHumanIndex)) {
     const identity = messageIdentity(message);
     const isVisiblePendingStep =
@@ -642,8 +642,8 @@ export function restoreLocalTurnMessageOrder(
   }
 
   return [
-    ...stablePrefix,
-    messages[pendingHumanIndex]!,
+    ...stablePrefix, //历史消息
+    messages[pendingHumanIndex]!, //用户消息
     ...earlyPendingSteps,
     ...messages.slice(pendingHumanIndex + 1),
   ];
@@ -694,7 +694,7 @@ export function restoreReconnectedTurnMessageOrder(
 
   // Only the segment since the previous visible human can belong to the
   // active turn; older turns are anchored by their own human message.
-  let segmentStart = 0;
+  let segmentStart = 0; //humanIndex segmentStart
   for (let index = humanIndex - 1; index >= 0; index--) {
     const message = messages[index];
     if (message?.type === "human" && !isHiddenFromUIMessage(message)) {
@@ -1270,7 +1270,7 @@ export function useCoalescedStreamMessages(
       // one must not have its first frame deferred. Dropping the snapshot with
       // it costs one render per stream end, versus one per idle message change
       // if the snapshot were instead kept in sync while nothing reads it.
-      lastFlushRef.current = Number.NEGATIVE_INFINITY;
+      lastFlushRef.current = Number.NEGATIVE_INFINITY; //负无穷大（-∞）
       setSnapshot((previous) => (previous === null ? previous : null));
       return;
     }
